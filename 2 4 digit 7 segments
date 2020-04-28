@@ -1,0 +1,145 @@
+const int dly = 50;
+const int latchPin = 9;
+const int clockPin = 8;
+const int dataPin = 10;
+
+const int aval = 7;
+const int bval = 6;
+const int cval = 5;
+const int dval = 4;
+const int eval = 3;
+const int fval = 2;
+const int gval = 11;
+const int hval = 12;
+
+byte leds = 0;
+
+void updateShiftRegister()
+{
+  digitalWrite(latchPin, LOW);
+  shiftOut(dataPin, clockPin, MSBFIRST, leds);
+  digitalWrite(latchPin, HIGH);
+}
+void setup() {
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT); 
+  pinMode(dataPin, OUTPUT);
+
+  pinMode(aval, OUTPUT);
+  pinMode(bval, OUTPUT);
+  pinMode(cval, OUTPUT);
+  pinMode(dval, OUTPUT);
+  pinMode(eval, OUTPUT);
+  pinMode(fval, OUTPUT);
+  pinMode(gval, OUTPUT);
+  pinMode(hval, OUTPUT);
+}
+
+void loop() {
+  leds = 0;
+  updateShiftRegister();
+  for (int i = 0; i < 8; i++)
+  {
+    leds = 0;
+    bitSet(leds, i);
+    updateShiftRegister();
+    digitalWrite(aval, HIGH);
+    digitalWrite(bval, HIGH);
+    digitalWrite(cval, HIGH);
+    digitalWrite(dval, HIGH);
+    digitalWrite(eval, HIGH);
+    digitalWrite(fval, HIGH);
+    digitalWrite(gval, HIGH);
+    digitalWrite(hval, HIGH);
+    while(i = 7)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, LOW);
+     digitalWrite(dval, HIGH);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, LOW);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+    while(i = 0)
+    {
+     digitalWrite(aval, LOW);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, HIGH);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, LOW);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 1)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, HIGH);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, LOW);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 2)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, LOW);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, HIGH);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 3)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, LOW);
+     digitalWrite(dval, HIGH);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, HIGH);
+     digitalWrite(gval, LOW);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 4)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, LOW);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, HIGH);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 5)
+    {
+     digitalWrite(aval, LOW);
+     digitalWrite(bval, HIGH);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, LOW);
+     digitalWrite(eval, HIGH);
+     digitalWrite(fval, HIGH);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+     while(i = 6)
+    {
+     digitalWrite(aval, HIGH);
+     digitalWrite(bval, LOW);
+     digitalWrite(cval, HIGH);
+     digitalWrite(dval, LOW);
+     digitalWrite(eval, LOW);
+     digitalWrite(fval, HIGH);
+     digitalWrite(gval, HIGH);
+     digitalWrite(hval, HIGH); 
+    }
+
+    delay(dly);
+  }
+}
